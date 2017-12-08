@@ -9,7 +9,7 @@
 
 namespace App\Controllers;
 
-class Posts {
+class Posts extends \Core\Controller {
 
 
 	/**
@@ -24,5 +24,11 @@ class Posts {
 	 */
 	public function addNew(){
 		echo 'addNew action in Posts controller';
+	}
+
+	public function edit(){
+		echo 'edit action in the Posts controller';
+		echo '<p>Route parameters: <pre>' .
+		     htmlspecialchars(print_r($this->route_params, true)) . '</pre></p>';
 	}
 }

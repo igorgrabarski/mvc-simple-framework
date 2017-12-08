@@ -15,6 +15,7 @@ $router = new Core\Router();
 $router->add('{controller}/{action}');
 $router->add('admin/{action}/{controller}');
 $router->add('{action}/{controller}/{id:\d+}');
+$router->add('{controller}/{id:\d+}/{action}');
 
 // Dispatch the route
 $router->dispatch($_SERVER['QUERY_STRING']);
