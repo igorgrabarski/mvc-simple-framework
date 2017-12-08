@@ -9,6 +9,8 @@ namespace App\Controllers;
  * Time: 7:02 PM
  */
 
+use \Core\View;
+
 class Posts extends \Core\Controller {
 
 
@@ -16,7 +18,7 @@ class Posts extends \Core\Controller {
 	 * Show the index page
 	 */
 	protected function indexAction(){
-		echo 'index action in Posts controller';
+		View::renderTemplate('Posts/index.html');
 	}
 
 	/**
