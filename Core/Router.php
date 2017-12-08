@@ -31,7 +31,7 @@ class Router {
 		$route = preg_replace( '/\//', '\\/', $route );
 
 		// Convert variables
-		$route = preg_replace( '/\{([a-z]+)\}/', '(?P<\1>[a-z]+)', $route );
+		$route = preg_replace( '/\{([a-z-]+)\}/', '(?P<\1>[a-z-]+)', $route );
 
 		// Convert variables with custom regular expressions
 		$route = preg_replace( '/\{([a-z]+):([^\}]+)\}/', '(?P<\1>\2)', $route );
@@ -122,7 +122,7 @@ class Router {
 	 * @return mixed
 	 */
 	public function convertToStudlyCaps( $string ) {
-		return str_replace( ' ', '', ucwords( str_replace( '-', '', $string ) ) );
+		return str_replace( ' ', '', ucwords( str_replace( '-', ' ', $string ) ) );
 	}
 
 
