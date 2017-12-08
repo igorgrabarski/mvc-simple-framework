@@ -13,7 +13,6 @@ $router->add('admin/{action}/{controller}');
 $router->add('{action}/{controller}/{id:\d+}');
 
 
-
 $url = $_SERVER['QUERY_STRING'];
 
 if($router->match($url)){
