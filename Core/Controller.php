@@ -1,12 +1,13 @@
 <?php
+
+namespace Core;
+
 /**
  * Base controller
  * User: igor
  * Date: 12/7/17
  * Time: 9:35 PM
  */
-
-namespace Core;
 
 abstract class Controller {
 

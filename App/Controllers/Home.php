@@ -1,4 +1,9 @@
 <?php
+
+namespace App\Controllers;
+
+use \Core\View;
+
 /**
  * Home Controller
  * User: igor
@@ -6,16 +11,13 @@
  * Time: 7:33 PM
  */
 
-
-namespace App\Controllers;
-
 class Home extends \Core\Controller {
 
 	/**
 	 * Show the index page
 	 */
 	protected function indexAction(){
-		echo 'index action in the Home controller';
+		View::render('Home/index.php');
 	}
 
 
@@ -24,7 +26,6 @@ class Home extends \Core\Controller {
 	 */
 	protected function before() {
 		echo "(before) ";
-		return false;
 	}
 
 	/**

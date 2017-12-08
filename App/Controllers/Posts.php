@@ -1,13 +1,13 @@
 <?php
+
+namespace App\Controllers;
+
 /**
  * Posts Controller
  * User: igor
  * Date: 12/7/17
  * Time: 7:02 PM
  */
-
-
-namespace App\Controllers;
 
 class Posts extends \Core\Controller {
 

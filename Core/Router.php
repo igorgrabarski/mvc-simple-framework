@@ -1,12 +1,13 @@
 <?php
+
+namespace Core;
+
 /**
  * Created by PhpStorm.
  * User: igor
  * Date: 12/6/17
  * Time: 8:38 PM
  */
-
-namespace Core;
 
 class Router {
 
