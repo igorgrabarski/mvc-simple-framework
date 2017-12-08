@@ -14,7 +14,23 @@ class Home extends \Core\Controller {
 	/**
 	 * Show the index page
 	 */
-	public function index(){
+	protected function indexAction(){
 		echo 'index action in the Home controller';
+	}
+
+
+	/**
+	 * Before filter
+	 */
+	protected function before() {
+		echo "(before) ";
+		return false;
+	}
+
+	/**
+	 * After filter
+	 */
+	protected function after() {
+		echo " (after)";
 	}
 }
