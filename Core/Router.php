@@ -3,14 +3,13 @@
 namespace Core;
 
 /**
- * Created by PhpStorm.
+ * The Router class
  * User: igor
  * Date: 12/6/17
  * Time: 8:38 PM
  */
 
 class Router {
-
 
 	/** The Routing Table
 	 * @var array
@@ -22,7 +21,6 @@ class Router {
 	 * @var array
 	 */
 	protected $params = [];
-
 
 	/** Add a route to the Routing Table
 	 *
@@ -164,5 +162,4 @@ class Router {
 
 		return $url;
 	}
-
 }
