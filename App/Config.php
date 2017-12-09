@@ -20,15 +20,15 @@ class Config {
 	/**
 	 * Database name
 	 */
-	const DB_NAME = 'mvc';
+	const DB_NAME = 'YOUR_DATABASE_NAME';
 
 	/**
 	 * Database user
 	 */
-	const DB_USER = 'root';
+	const DB_USER = 'YOUR_USER_NAME';
 
 	/**
 	 * Database password
 	 */
-	const DB_PASSWORD = 'root';
+	const DB_PASSWORD = 'YOUR_USER_PASSWORD';
 }
