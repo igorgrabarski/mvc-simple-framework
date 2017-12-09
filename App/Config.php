@@ -31,4 +31,6 @@ class Config {
 	 * Database password
 	 */
 	const DB_PASSWORD = 'YOUR_USER_PASSWORD';
+
+	const SHOW_ERRORS = false;
 }

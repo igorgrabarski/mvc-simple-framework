@@ -18,6 +18,7 @@ abstract class Model {
 	 *  Get the PDO database connection
 	 *
 	 * @return mixed
+	 * @throws \Exception
 	 */
 	protected static function getDB() {
 
@@ -32,10 +33,10 @@ abstract class Model {
 				$db = new PDO( $dsn, Config::DB_USER, Config::DB_PASSWORD );
 
 				// Throw an exception when error occurs
-				$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+				$db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
 			} catch ( \PDOException $e ) {
-				echo $e->getMessage();
+				throw new \Exception( $e->getMessage() );
 			}
 		}
 
