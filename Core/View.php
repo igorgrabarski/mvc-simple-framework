@@ -16,18 +16,19 @@ class View {
 	 *
 	 * @param $view
 	 * @param array $args
+	 *
+	 * @throws \Exception
 	 */
-	public static function render($view, $args = []){
+	public static function render( $view, $args = [] ) {
 
-		extract($args, EXTR_SKIP);
+		extract( $args, EXTR_SKIP );
 
 		$file = "../App/Views/$view";
 
-		if(is_readable($file)){
+		if ( is_readable( $file ) ) {
 			require $file;
-		}
-		else {
-			echo "$file not found";
+		} else {
+			throw new \Exception( "$file not found" );
 		}
 	}
 
@@ -37,14 +38,14 @@ class View {
 	 * @param string $template The template file
 	 * @param array $args Arguments
 	 */
-	public static function renderTemplate($template, $args = []){
+	public static function renderTemplate( $template, $args = [] ) {
 		static $twig = null;
 
-		if($twig === null){
-			$loader = new \Twig_Loader_Filesystem('../App/Views');
-			$twig = new \Twig_Environment($loader);
+		if ( $twig === null ) {
+			$loader = new \Twig_Loader_Filesystem( '../App/Views' );
+			$twig   = new \Twig_Environment( $loader );
 		}
 
-		echo $twig->render($template, $args);
+		echo $twig->render( $template, $args );
 	}
 }

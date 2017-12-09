@@ -89,11 +89,14 @@ class Router {
 
 	/** Dispatch the route, create the controller class instance
 	 *  and invoke action method on this instance
+	 *
 	 * @param string $url The route URL
+	 *
+	 * @throws \Exception
 	 */
 	public function dispatch( $url ) {
 
-		$url = $this->removeQueryStringVariables($url);
+		$url = $this->removeQueryStringVariables( $url );
 
 		if ( $this->match( $url ) ) {
 			$controller = $this->params['controller'];
@@ -101,7 +104,7 @@ class Router {
 			$controller = "App\Controllers\\$controller";
 
 			if ( class_exists( $controller ) ) {
-				$controller_object = new $controller($this->params);
+				$controller_object = new $controller( $this->params );
 
 				$action = $this->params['action'];
 				$action = $this->convertToCamelCase( $action );
@@ -109,19 +112,20 @@ class Router {
 				if ( is_callable( [ $controller_object, $action ] ) ) {
 					$controller_object->$action();
 				} else {
-					echo "Method $action (in controller $controller) not found";
+					throw new \Exception( "Method $action (in controller $controller) not found" );
 				}
 			} else {
-				echo "Controller class $controller not found";
+				throw new \Exception( "Controller class $controller not found" );
 			}
 		} else {
-			echo 'No route matched';
+			throw new \Exception( 'No route matched' );
 		}
 	}
 
 
 	/** Convert the string with hyphens to StudlyCaps
 	 *  e.g. post-authors => PostAuthors
+	 *
 	 * @param string $string The string to convert
 	 *
 	 * @return mixed
@@ -133,10 +137,11 @@ class Router {
 
 	/** Convert the string with hyphens to camelCase
 	 *  e.g. add-new => addNew
+	 *
 	 * @param string $string The string to convert
 	 */
-	public function convertToCamelCase($string){
-		return lcfirst($this->convertToStudlyCaps($string));
+	public function convertToCamelCase( $string ) {
+		return lcfirst( $this->convertToStudlyCaps( $string ) );
 	}
 
 
@@ -147,15 +152,13 @@ class Router {
 	 *
 	 * @return string
 	 */
-	protected function removeQueryStringVariables($url){
-		if($url != ''){
-			$parts = explode('&', $url, 2);
+	protected function removeQueryStringVariables( $url ) {
+		if ( $url != '' ) {
+			$parts = explode( '&', $url, 2 );
 
-			if(strpos($parts[0], '=') === false){
+			if ( strpos( $parts[0], '=' ) === false ) {
 				$url = $parts[0];
-			}
-			else
-			{
+			} else {
 				$url = '';
 			}
 		}
